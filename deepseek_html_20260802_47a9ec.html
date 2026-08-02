@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusAudit · Complete Infrastructure Solutions</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #0b1a2b;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .bg-deep-navy {
+            background: #0b1a2b;
+        }
+        .bg-slate-soft {
+            background: #1e2a3a;
+        }
+        .text-cyan-accent {
+            color: #14b8a6;
+        }
+        .border-cyan-accent {
+            border-color: #14b8a6;
+        }
+        .btn-primary {
+            background: #14b8a6;
+            color: #0b1a2b;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            background: #0d9488;
+            transform: translateY(-1px);
+        }
+        .btn-outline-cyan {
+            border: 1px solid #14b8a6;
+            color: #14b8a6;
+            transition: 0.2s;
+        }
+        .btn-outline-cyan:hover {
+            background: #14b8a6;
+            color: #0b1a2b;
+        }
+        .nav-link {
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: #14b8a6;
+        }
+        .page {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .service-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .service-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -8px rgba(20, 184, 166, 0.2);
+        }
+        .datacenter-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .datacenter-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-2px);
+        }
+        .industry-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .industry-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-2px);
+        }
+        .scenario-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .scenario-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-2px);
+        }
+        .webinar-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .webinar-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -8px rgba(20, 184, 166, 0.15);
+        }
+        .resource-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+            background: #132031;
+        }
+        .resource-card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-2px);
+        }
+        .stat-badge {
+            background: #172433;
+            border: 1px solid #2d3b4f;
+        }
+        input,
+        textarea,
+        select {
+            background: #172433;
+            border: 1px solid #2d3b4f;
+            color: #e2e8f0;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+        }
+        .step-dot {
+            transition: 0.25s;
+            background: #2d3b4f;
+        }
+        .step-dot.active {
+            background: #14b8a6;
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.3);
+        }
+        .step-panel {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .step-panel.active {
+            display: block;
+        }
+        .badge-cyan {
+            background: rgba(20, 184, 166, 0.1);
+            color: #14b8a6;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .badge-success {
+            background: rgba(20, 184, 166, 0.15);
+            color: #14b8a6;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #14b8a6 0%, #8b5cf6 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .shadow-cyber {
+            box-shadow: 0 8px 30px rgba(20, 184, 166, 0.15);
+        }
+        .pricing-card {
+            border: 1px solid #2d3b4f;
+            transition: 0.25s;
+        }
+        .pricing-card:hover {
+            border-color: #14b8a6;
+        }
+        .pricing-card.popular {
+            border-color: #14b8a6;
+            background: rgba(20, 184, 166, 0.05);
+        }
+        .register-badge {
+            background: #14b8a6;
+            color: #0b1a2b;
+            font-weight: 700;
+        }
+        .process-step {
+            border-left: 3px solid #14b8a6;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        .process-step .step-number {
+            color: #14b8a6;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid #2d3b4f;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        @media (max-width: 640px) {
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="bg-deep-navy border-b border-gray-700/50 sticky top-0 z-50 backdrop-blur-sm bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold tracking-tight">
+                        <span class="text-cyan-accent">⛁</span>
+                        <span class="text-white">Nexus</span>
+                        <span class="text-cyan-accent">Audit</span>
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center gap-5 text-sm font-medium">
+                    <a href="#" class="nav-link active" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="datacenters">Data Centers</a>
+                    <a href="#" class="nav-link" data-page="industries">Industries</a>
+                    <a href="#" class="nav-link" data-page="services">Services</a>
+                    <a href="#" class="nav-link" data-page="scenarios">Scenarios</a>
+                    <a href="#" class="nav-link" data-page="webinars">Webinars</a>
+                    <a href="#" class="nav-link" data-page="resources">Resources</a>
+                    <a href="#" class="nav-link" data-page="pricing">Pricing</a>
+                    <a href="#" class="nav-link" data-page="contact">Contact</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="hidden lg:inline text-xs bg-cyan-accent/10 px-3 py-1.5 rounded-full text-cyan-accent border border-cyan-accent/20">
+                        <i class="fas fa-phone-alt mr-1"></i> +91 22 4000 1234
+                    </span>
+                    <button id="mobileMenuBtn" class="md:hidden text-gray-300 text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" class="md:hidden hidden pb-4 flex flex-col gap-2 text-sm">
+                <a href="#" class="nav-link active px-2 py-1" data-page="home">Home</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="datacenters">Data Centers</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="industries">Industries</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="services">Services</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="scenarios">Scenarios</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="webinars">Webinars</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="resources">Resources</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="pricing">Pricing</a>
+                <a href="#" class="nav-link px-2 py-1" data-page="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+
+        <!-- ============================================================ -->
+        <!-- HOME PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-home" class="page active">
+            <section class="grid md:grid-cols-5 gap-8 lg:gap-12 items-center mb-12">
+                <div class="md:col-span-3">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+                        India's Premier
+                        <span class="gradient-text">Co-location</span>
+                        <br class="hidden sm:block">
+                        & Cloud Migration Partner
+                    </h1>
+                    <p class="mt-4 text-gray-300 text-base sm:text-lg max-w-xl leading-relaxed">
+                        Enterprise-grade data centers in Mumbai, Delhi NCR, and Bangalore. Save 40-77% on infrastructure costs. <span class="text-cyan-accent font-medium">Trusted by 200+ businesses.</span>
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a href="#audit-form" class="btn-primary px-6 py-3 rounded-lg flex items-center gap-2 shadow-cyber text-sm sm:text-base">
+                            <i class="fas fa-bolt"></i> Start free audit
+                        </a>
+                        <a href="#datacenters" class="btn-outline-cyan px-6 py-3 rounded-lg flex items-center gap-2 text-sm sm:text-base">
+                            <i class="fas fa-arrow-right"></i> View data centers
+                        </a>
+                    </div>
+                    <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-400">
+                        <span><i class="fas fa-shield-alt text-cyan-accent mr-1"></i> ISO 27001</span>
+                        <span class="w-px h-4 bg-gray-600 hidden sm:block"></span>
+                        <span><i class="fas fa-server text-cyan-accent mr-1"></i> Mumbai · Delhi · Bangalore</span>
+                        <span class="w-px h-4 bg-gray-600 hidden sm:block"></span>
+                        <span><i class="fas fa-coins text-cyan-accent mr-1"></i> Save 40-77% on TCO</span>
+                    </div>
+                </div>
+                <div class="md:col-span-2 hidden md:flex justify-center">
+                    <div class="w-64 h-64 rounded-full bg-gradient-to-br from-cyan-accent/10 via-slate-soft to-transparent flex items-center justify-center border border-cyan-accent/30 shadow-2xl relative">
+                        <i class="fas fa-server text-7xl text-cyan-accent/70"></i>
+                        <span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] bg-cyan-accent/20 px-3 py-1 rounded-full text-cyan-accent">Mumbai · BOM1</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="stat-badge rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-cyan-accent">77.5%</div>
+                    <div class="text-xs text-gray-400">savings on 1 server</div>
+                </div>
+                <div class="stat-badge rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-cyan-accent">₹1.2Cr</div>
+                    <div class="text-xs text-gray-400">avg. annual savings</div>
+                </div>
+                <div class="stat-badge rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-cyan-accent">99.99%</div>
+                    <div class="text-xs text-gray-400">uptime SLA</div>
+                </div>
+                <div class="stat-badge rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-cyan-accent">200+</div>
+                    <div class="text-xs text-gray-400">servers migrated</div>
+                </div>
+            </div>
+
+            <!-- Data Center Highlight -->
+            <div class="bg-slate-soft/40 rounded-2xl p-6 md:p-8 border border-cyan-accent/20 mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-location-dot text-cyan-accent text-2xl"></i>
+                    <h2 class="text-xl font-bold text-white">Our India Data Centers</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-[#0b1a2b] p-4 rounded-xl border border-gray-700/50 text-center">
+                        <i class="fas fa-city text-2xl text-cyan-accent mb-2"></i>
+                        <h3 class="text-white font-semibold">Mumbai</h3>
+                        <p class="text-xs text-gray-400">Sify · CtrlS · NTT · ST Telemedia</p>
+                        <p class="text-xs text-cyan-accent">Tier-IV · 5-15 MW</p>
+                    </div>
+                    <div class="bg-[#0b1a2b] p-4 rounded-xl border border-gray-700/50 text-center">
+                        <i class="fas fa-city text-2xl text-cyan-accent mb-2"></i>
+                        <h3 class="text-white font-semibold">Delhi NCR</h3>
+                        <p class="text-xs text-gray-400">NxtGen · Sify</p>
+                        <p class="text-xs text-cyan-accent">Tier-IV · 3-20 MW</p>
+                    </div>
+                    <div class="bg-[#0b1a2b] p-4 rounded-xl border border-gray-700/50 text-center">
+                        <i class="fas fa-city text-2xl text-cyan-accent mb-2"></i>
+                        <h3 class="text-white font-semibold">Bangalore</h3>
+                        <p class="text-xs text-gray-400">CtrlS · Sify</p>
+                        <p class="text-xs text-cyan-accent">Tier-III+ · 2-12 MW</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Form -->
+            <section id="audit-form" class="bg-slate-soft/40 backdrop-blur-sm rounded-2xl p-6 md:p-10 border border-cyan-accent/20 shadow-cyber mb-12">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-clipboard-list text-cyan-accent"></i> Free Audit — Find Your Savings
+                        </h2>
+                        <p class="text-gray-300 text-sm">Complete 3 steps — get a personalized report</p>
+                    </div>
+                    <div class="step-indicator flex items-center gap-3">
+                        <span class="step-dot active w-3 h-3 rounded-full"></span>
+                        <span class="step-dot w-3 h-3 rounded-full"></span>
+                        <span class="step-dot w-3 h-3 rounded-full"></span>
+                        <span class="text-xs text-gray-400 ml-1"><span id="stepCounter" class="text-cyan-accent font-medium">1</span>/3</span>
+                    </div>
+                </div>
+                <form id="multiStepForm" onsubmit="return false;">
+                    <div id="step1" class="step-panel active">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Company name *</label><input type="text" id="companyName" placeholder="e.g. Acme Corp" class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white" required></div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Your designation *</label><input type="text" id="designation" placeholder="CTO / IT Head" class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white" required></div>
+                        </div>
+                        <div class="mt-6 flex justify-end"><button type="button" class="btn-primary px-6 py-2.5 rounded-lg text-sm" onclick="goToStep(2)">Next <i class="fas fa-arrow-right ml-1"></i></button></div>
+                    </div>
+                    <div id="step2" class="step-panel">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Current setup</label>
+                                <select id="currentSetup" class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white">
+                                    <option value="cloud">Cloud (AWS/Azure/GCP)</option>
+                                    <option value="physical">Physical servers in office</option>
+                                    <option value="both">Cloud + Physical</option>
+                                    <option value="none">No infrastructure yet</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Number of servers</label>
+                                <select id="serverCount" class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white">
+                                    <option value="1">1 server</option>
+                                    <option value="2-5">2-5 servers</option>
+                                    <option value="6-10">6-10 servers</option>
+                                    <option value="11-50">11-50 servers</option>
+                                    <option value="50+">50+ servers</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-between">
+                            <button type="button" class="btn-outline-cyan px-6 py-2.5 rounded-lg text-sm" onclick="goToStep(1)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+                            <button type="button" class="btn-primary px-6 py-2.5 rounded-lg text-sm" onclick="goToStep(3)">Next <i class="fas fa-arrow-right ml-1"></i></button>
+                        </div>
+                    </div>
+                    <div id="step3" class="step-panel">
+                        <div><label class="block text-sm font-medium text-gray-300 mb-1">Your biggest challenge</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
+                                <label class="flex items-center gap-2 text-sm bg-[#172433] px-3 py-2 rounded-lg border border-gray-600"><input type="checkbox" id="challengeCost" value="High costs" class="accent-cyan-accent"> High costs</label>
+                                <label class="flex items-center gap-2 text-sm bg-[#172433] px-3 py-2 rounded-lg border border-gray-600"><input type="checkbox" id="challengeService" value="Poor service quality" class="accent-cyan-accent"> Poor service quality</label>
+                                <label class="flex items-center gap-2 text-sm bg-[#172433] px-3 py-2 rounded-lg border border-gray-600"><input type="checkbox" id="challengeMaintenance" value="Maintenance overhead" class="accent-cyan-accent"> Maintenance overhead</label>
+                                <label class="flex items-center gap-2 text-sm bg-[#172433] px-3 py-2 rounded-lg border border-gray-600"><input type="checkbox" id="challengeGrowth" value="Need to grow" class="accent-cyan-accent"> Need to grow</label>
+                            </div>
+                        </div>
+                        <div class="mt-4"><label class="block text-sm font-medium text-gray-300 mb-1">Tell us more</label><textarea id="otherPain" rows="2" placeholder="e.g. security concerns, compliance..." class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white"></textarea></div>
+                        <div class="mt-6 flex justify-between">
+                            <button type="button" class="btn-outline-cyan px-6 py-2.5 rounded-lg text-sm" onclick="goToStep(2)"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+                            <button type="button" class="btn-primary px-6 py-2.5 rounded-lg text-sm shadow-cyber" onclick="submitForm()"><i class="fas fa-paper-plane mr-1"></i> Submit & get report</button>
+                        </div>
+                    </div>
+                    <div id="formSuccess" class="hidden text-center py-6">
+                        <i class="fas fa-check-circle text-5xl text-cyan-accent mb-3"></i>
+                        <h3 class="text-xl font-bold text-white">Audit request received</h3>
+                        <p class="text-gray-300">We'll prepare a personalized report with your savings estimate within 24 hours.</p>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DATA CENTERS PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-datacenters" class="page">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                <i class="fas fa-server text-cyan-accent mr-3"></i>Our India Data Centers
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-6">
+                Enterprise-grade Tier-III and Tier-IV facilities in Mumbai, Delhi NCR, and Bangalore. Your servers are in safe hands.
+            </p>
+
+            <!-- Mumbai -->
+            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fas fa-location-dot text-cyan-accent"></i> Mumbai (Primary)
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">Sify Data Center — Airoli, Navi Mumbai</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-IV</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">5 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">2,500+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> N+1 redundant power, 2N UPS system</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Diesel generators with 72-hour fuel storage</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Precision cooling with N+1 redundancy</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Biometric access, SOC2 Type II, ISO 27001</li>
+                    </ul>
+                </div>
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">CtrlS Data Center — Turbhe, Navi Mumbai</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-IV</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">10 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">3,000+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 99.995% uptime guarantee, 2N power</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Uptime Institute certified</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Multi-layered security, carrier-neutral</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Direct cloud connectivity</li>
+                    </ul>
+                </div>
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">NTT Global Data Center — Mumbai</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-IV</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">15 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">4,000+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Global standards (NTT world-class)</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Multiple fiber entry points</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Advanced cooling technology</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Robust security, hybrid cloud connectivity</li>
+                    </ul>
+                </div>
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">ST Telemedia Global DC — Mumbai</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-III+</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">8 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">2,000+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Carrier-neutral facility</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Direct cloud connects</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Advanced security</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Scalable infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Delhi NCR -->
+            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fas fa-location-dot text-cyan-accent"></i> Delhi NCR (Secondary)
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">NxtGen Data Center — Noida</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-IV</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">20 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">5,000+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Largest data center in North India</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 2N power redundancy</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> N+1 cooling</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Direct connectivity to all major cloud providers</li>
+                    </ul>
+                </div>
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">Sify Data Center — Noida</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-III+</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">3 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">1,000+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> High-security zone</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Multiple carrier connectivity</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 24/7 remote hands support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bangalore -->
+            <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fas fa-location-dot text-cyan-accent"></i> Bangalore (Tertiary)
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">CtrlS Data Center — Bangalore</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-IV</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">12 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">3,500+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> IT hub connectivity</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Green energy initiatives</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Advanced cooling systems</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Comprehensive security</li>
+                    </ul>
+                </div>
+                <div class="datacenter-card rounded-xl p-5 border-l-4 border-cyan-accent">
+                    <h4 class="text-lg font-bold text-white">Sify Data Center — Bangalore</h4>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Tier-III+</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">2 MW</span>
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">800+ Racks</span>
+                    </div>
+                    <ul class="mt-2 text-xs text-gray-400 space-y-1">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 24/7 NOC support</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Carrier-neutral connectivity</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Best-in-class infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="mt-8 bg-slate-soft/40 rounded-2xl p-6 border border-cyan-accent/20">
+                <h3 class="text-lg font-bold text-white mb-3">What You Get at Every Data Center</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-bolt text-cyan-accent"></i> N+1 Power Redundancy</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-snowflake text-cyan-accent"></i> Precision Cooling</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-shield text-cyan-accent"></i> 24/7 Security</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-network-wired text-cyan-accent"></i> Carrier-Neutral</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-fingerprint text-cyan-accent"></i> Biometric Access</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-cloud text-cyan-accent"></i> Direct Cloud Connect</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-headset text-cyan-accent"></i> 24/7 Remote Hands</div>
+                    <div class="flex items-center gap-2 text-gray-300"><i class="fas fa-certificate text-cyan-accent"></i> ISO 27001 / SOC2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- INDUSTRIES PAGE (50 Industries) -->
+        <!-- ============================================================ -->
+        <div id="page-industries" class="page">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                <i class="fas fa-industry text-cyan-accent mr-3"></i>50 Industries We Serve
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-6">
+                Every industry has unique infrastructure needs. We provide tailored cloud migration and co-location solutions for 50+ industries.
+            </p>
+
+            <div class="industry-grid">
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Banking & Financial Services</h4>
+                    <p class="text-xs text-gray-400 mt-1">RBI compliant, 2-3ms latency, 99.99% uptime</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">45% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Insurance Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Hybrid cloud, policy processing, secure data</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Stock Broking / Trading</h4>
+                    <p class="text-xs text-gray-400 mt-1">Microsecond latency, 99.999% availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">Competitive advantage</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Mutual Funds</h4>
+                    <p class="text-xs text-gray-400 mt-1">NAV calculation, HPC, regulatory compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster NAV</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Payment Gateways</h4>
+                    <p class="text-xs text-gray-400 mt-1">PCI-DSS compliant, 24/7 availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% success</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">NBFCs</h4>
+                    <p class="text-xs text-gray-400 mt-1">Secure VPN, remote workforce, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Fintech Startups</h4>
+                    <p class="text-xs text-gray-400 mt-1">Turnkey setup, pay-as-you-grow, security</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">60% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Wealth Management</h4>
+                    <p class="text-xs text-gray-400 mt-1">Data privacy, high availability, performance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">100% data privacy</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Credit Rating Agencies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Data integrity, security, availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% availability</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Asset Management</h4>
+                    <p class="text-xs text-gray-400 mt-1">Large datasets, analytics, reporting</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster reporting</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Hospitals</h4>
+                    <p class="text-xs text-gray-400 mt-1">Patient data, HIPAA-ready, 24/7 availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% uptime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Pharmaceutical Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Drug research, clinical trials, HPC</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster research</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Diagnostic Labs</h4>
+                    <p class="text-xs text-gray-400 mt-1">Large imaging data, quick access, reporting</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Healthtech Startups</h4>
+                    <p class="text-xs text-gray-400 mt-1">Scaling, data privacy, secure platform</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">60% savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Medical Devices</h4>
+                    <p class="text-xs text-gray-400 mt-1">IoT data, remote monitoring, real-time</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">Predictive maintenance</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Clinical Research</h4>
+                    <p class="text-xs text-gray-400 mt-1">Research data security, collaboration</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">100% data security</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Health Insurance</h4>
+                    <p class="text-xs text-gray-400 mt-1">Claims processing, data security, cost</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">45% cost reduction</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Health Information Exchanges</h4>
+                    <p class="text-xs text-gray-400 mt-1">Data sharing, security, interoperability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% uptime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Telemedicine Platforms</h4>
+                    <p class="text-xs text-gray-400 mt-1">Video streaming, low latency, data privacy</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">3ms latency</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Medical Billing</h4>
+                    <p class="text-xs text-gray-400 mt-1">24/7 processing, data security, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Production data, downtime, legacy systems</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Heavy Engineering</h4>
+                    <p class="text-xs text-gray-400 mt-1">CAD/CAM data, collaboration, huge files</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster design</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Automotive Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">IoT data, remote monitoring, predictive</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Aerospace & Defense</h4>
+                    <p class="text-xs text-gray-400 mt-1">High security, availability, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">100% data security</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Electronics Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Production data, supply chain, SAP/HANA</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Textile Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Legacy systems, automation, reporting</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% less downtime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Food Processing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Cold chain data, quality control, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% uptime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Chemical Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Data security, compliance, reporting</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Metal Processing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Legacy systems, data silos, downtime</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">60% less downtime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Cement Manufacturing</h4>
+                    <p class="text-xs text-gray-400 mt-1">Production data, supply chain, SAP</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">SaaS Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Multi-tenant, scaling, cost optimization</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">56% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Software Development</h4>
+                    <p class="text-xs text-gray-400 mt-1">Dev/test, CI/CD, collaboration</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost reduction</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">AI/ML Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">GPU/TPU, large datasets, HPC</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster training</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Blockchain Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">High computing, security, decentralized</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">3x faster processing</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">IoT Platforms</h4>
+                    <p class="text-xs text-gray-400 mt-1">Millions of devices, real-time data</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Gaming Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Low latency, high bandwidth, global</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2-3ms latency</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">AR/VR Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">Huge files, low latency, rendering</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">3x faster rendering</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Cybersecurity Firms</h4>
+                    <p class="text-xs text-gray-400 mt-1">Large datasets, real-time, security</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">100% data security</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Cloud Service Providers</h4>
+                    <p class="text-xs text-gray-400 mt-1">Infrastructure, scaling, cost</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">IT Services/Consulting</h4>
+                    <p class="text-xs text-gray-400 mt-1">Client infrastructure, data security</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">99.99% uptime</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Retail & E-commerce</h4>
+                    <p class="text-xs text-gray-400 mt-1">Peak traffic, payments, analytics</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Logistics & Supply Chain</h4>
+                    <p class="text-xs text-gray-400 mt-1">Real-time tracking, data integration</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster logistics</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Real Estate</h4>
+                    <p class="text-xs text-gray-400 mt-1">Property management, CRM, reporting</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Education & EdTech</h4>
+                    <p class="text-xs text-gray-400 mt-1">Online learning, video, data privacy</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Government & Public Sector</h4>
+                    <p class="text-xs text-gray-400 mt-1">High security, compliance, availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">100% data security</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Defense Contractors</h4>
+                    <p class="text-xs text-gray-400 mt-1">Military-grade security, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">Zero breaches</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Energy & Utilities</h4>
+                    <p class="text-xs text-gray-400 mt-1">Grid data, remote monitoring, compliance</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">40% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Telecom Companies</h4>
+                    <p class="text-xs text-gray-400 mt-1">High data volume, real-time, scaling</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">2x faster processing</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Media & Entertainment</h4>
+                    <p class="text-xs text-gray-400 mt-1">Large files, video editing, distribution</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">50% cost savings</span>
+                </div>
+                <div class="industry-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">Non-Profit Organizations</h4>
+                    <p class="text-xs text-gray-400 mt-1">Limited budget, data security, availability</p>
+                    <span class="industry-badge inline-block mt-1 text-xs bg-cyan-accent/10 text-cyan-accent px-2 py-0.5 rounded-full">60% cost savings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SERVICES PAGE (6 Services with Full Content) -->
+        <!-- ============================================================ -->
+        <div id="page-services" class="page">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                <i class="fas fa-cogs text-cyan-accent mr-3"></i>Our Complete Solutions
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-6">
+                We solve infrastructure problems for every scenario — cloud, physical, hybrid, or starting from zero.
+            </p>
+
+            <!-- Service 1: Cloud Cost Optimization -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-cloud text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">1. Cloud Cost Optimization</h3>
+                        <p class="text-cyan-accent text-sm font-medium">Steady workloads → co-location. Save 40-60% on cloud bills.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">56% avg savings</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> You're paying premium prices for steady workloads (databases, core apps) that don't need cloud elasticity. 60% of cloud bills are wasted.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We analyze your cloud usage, identify steady vs elastic workloads, move steady workloads to co-location, and set up direct connect.</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> ₹4 Lakh/month → ₹1.75 Lakh/month. Save ₹2.25 Lakh/month (56% reduction).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Physical Server Migration -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-server text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">2. Physical Server Migration</h3>
+                        <p class="text-cyan-accent text-sm font-medium">Lift & shift to Mumbai DCs. Zero downtime, 99.99% uptime.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">4-6 hour window</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> Office server rooms have power fluctuations, inadequate cooling, security risks, and maintenance overload.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We assess, prepare, relocate, validate, and optimize your servers to enterprise data centers with zero downtime.</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> Zero unplanned downtime. 99.99% uptime. 66% power cost reduction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Hybrid Cloud + Co-location -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-sync text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">3. Hybrid Cloud + Co-location</h3>
+                        <p class="text-cyan-accent text-sm font-medium">Best of both — steady in co-location, elastic in cloud.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">2-3ms latency</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> Cloud-only is expensive for steady workloads. On-premise-only can't scale. You need both.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We design a hybrid architecture with co-location for steady workloads, cloud for elastic workloads, and direct connect for seamless communication.</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> 56% cost savings while keeping cloud scalability and performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Turnkey Setup -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-rocket text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">4. Turnkey Setup (From Zero)</h3>
+                        <p class="text-cyan-accent text-sm font-medium">Design, procure, deploy, manage — everything included.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">₹3,000/month</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> No IT infrastructure, no expertise, no office space. You need professional IT but don't know where to start.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We discover your needs, design the architecture, procure hardware at volume discounts, deploy in our data center, and manage everything 24/7.</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> Professional IT from day one. No capital expense. Start small, scale as you grow.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5: Security & Compliance -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-shield-halved text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">5. Security & Compliance</h3>
+                        <p class="text-cyan-accent text-sm font-medium">ISO 27001, SOC2, biometric access, 24/7 surveillance.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">Audit-ready</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> Office server rooms have basic security. Cloud security is logical only. Compliance audits often fail.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We provide physical security (biometric, CCTV), logical security (firewall, encryption), and compliance frameworks (ISO 27001, SOC2, GDPR).</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> Full compliance, 100% data security, passed audits in first attempt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 6: Resource Optimization -->
+            <div class="service-card rounded-xl p-6 md:p-8 mb-6 border-l-4 border-cyan-accent">
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <div class="w-14 h-14 rounded-full bg-cyan-accent/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-chart-pie text-2xl text-cyan-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">6. Resource Optimization</h3>
+                        <p class="text-cyan-accent text-sm font-medium">Right-size, consolidate, automate — reduce waste.</p>
+                        <span class="badge-cyan text-xs px-3 py-1 rounded-full inline-block mt-1">70% utilization</span>
+                        <div class="mt-3 space-y-3 text-gray-300 text-sm leading-relaxed">
+                            <p><strong class="text-white">The Problem:</strong> Most servers run at 20-30% utilization. 70-80% waste. Over-provisioned cloud instances. Zombie resources.</p>
+                            <p><strong class="text-white">Our Solution:</strong> We discover actual usage, right-size resources, consolidate workloads, implement auto-scaling, and continuously monitor.</p>
+                            <div class="bg-[#0b1a2b] p-3 rounded-lg border border-gray-700/50">
+                                <p class="text-sm"><span class="text-cyan-accent font-semibold">Result:</span> Utilization from 20% to 70%. 49% cost reduction (₹18 Lakh → ₹9.2 Lakh).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SCENARIOS PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-scenarios" class="page">
+            <h2 class="text-3xl font-bold text-white mb-2">
+                <i class="fas fa-users text-cyan-accent mr-3"></i>Find Your Scenario
+            </h2>
+            <p class="text-gray-400 mb-6">12 common scenarios — find yours and see how we solve it.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"My AWS bill doubled in 6 months"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Auto-scaling is running wild. Costs out of control.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Rightsize instances, move steady workloads, use reserved instances.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: 45% cost reduction</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"My cloud service quality is poor"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Latency issues, slow support, frequent throttling.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Move latency-sensitive workloads to Mumbai co-location.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Latency 15-20ms → 2-3ms. Support 24hrs → 15min</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"My server room is too hot"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Inadequate cooling, servers overheat and fail.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Move to data center with precision cooling.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: 45°C → 22°C. Zero heat-related failures</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"We can't pass compliance audits"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Cloud/office infrastructure doesn't meet compliance.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Co-location with full compliance controls.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Passed audit in first attempt</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"Hardware failure takes days to fix"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Waiting for parts, then fixing. Extended downtime.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: On-site spares, 4-hour replacement SLA.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: 4 days → 4 hours fix time</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"I have nothing — no cloud, no physical"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Growing business, need professional IT from scratch.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Turnkey setup — design, procure, deploy, manage.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Professional IT from day one, ₹3,000/month</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"We're IPO-bound, need enterprise infrastructure"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Need audited, professional infrastructure for due diligence.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Enterprise-grade co-location with full documentation.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Audit-ready infrastructure for IPO</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"We have no space for new servers"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Office server room is full, can't grow.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Co-location gives infinite scalability.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Add servers without taking more office space</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"DDoS attacks are costing us"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Cloud DDoS protection is expensive and sometimes fails.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Multi-layer DDoS protection in co-location.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: 99.99% DDoS mitigation success</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"Our IT team spends 60% on maintenance"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Too much time fixing hardware, not innovating.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: We handle all hardware, team focuses on applications.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: 80% of IT time now on business projects</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"My cloud bill is ₹10 Lakh/month"</h4>
+                    <p class="text-xs text-gray-400 mt-1">Cloud costs growing with business. No end in sight.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Comprehensive cloud-to-co-location migration plan.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: Stabilize at ₹5 Lakh/month, save ₹5 Lakh/month</p>
+                </div>
+                <div class="scenario-card rounded-xl p-4 border-l-4 border-cyan-accent">
+                    <h4 class="font-bold text-white text-sm">"We need disaster recovery"</h4>
+                    <p class="text-xs text-gray-400 mt-1">No backup site, single point of failure.</p>
+                    <p class="text-xs text-cyan-accent mt-1 font-medium">Solution: Second data center for DR, replication.</p>
+                    <p class="text-xs text-gray-500 mt-1">Result: RTO of 4 hours, RPO of 15 minutes</p>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-cyan-accent mr-1"></i> Not seeing your scenario? Contact us for a personalized consultation.</p>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- WEBINARS PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-webinars" class="page">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                <h2 class="text-3xl font-bold text-white">
+                    <i class="fas fa-video text-cyan-accent mr-3"></i>Upcoming Webinars
+                </h2>
+                <span class="text-sm text-gray-400"><i class="fas fa-calendar-alt text-cyan-accent mr-1"></i> Register now – limited seats</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="webinar-card rounded-xl p-6">
+                    <div class="flex justify-between items-start">
+                        <span class="register-badge text-xs font-bold px-3 py-1 rounded-full">🔥 28 seats left</span>
+                        <span class="text-cyan-accent text-sm"><i class="far fa-clock"></i> 2h</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mt-3">Co-location vs. Cloud: TCO Deep-Dive</h3>
+                    <p class="text-gray-300 text-sm mt-1">Learn how to cut infrastructure costs by 40-60% with hybrid co-location. Real case studies from manufacturing & fintech.</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-400">
+                        <span><i class="fas fa-user text-cyan-accent"></i> Priya Sharma, CTO</span>
+                        <span><i class="fas fa-calendar-day"></i> Aug 12, 2026 · 4:00 PM IST</span>
+                    </div>
+                    <button class="mt-4 btn-primary w-full py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Registration successful! You will receive a calendar invite.')">
+                        <i class="fas fa-ticket-alt mr-1"></i> Register now
+                    </button>
+                </div>
+
+                <div class="webinar-card rounded-xl p-6">
+                    <div class="flex justify-between items-start">
+                        <span class="register-badge text-xs font-bold px-3 py-1 rounded-full">🎯 12 seats left</span>
+                        <span class="text-cyan-accent text-sm"><i class="far fa-clock"></i> 1.5h</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mt-3">Zero-Trust & Physical Security in Data Centers</h3>
+                    <p class="text-gray-300 text-sm mt-1">Biometric access, camera monitoring, and compliance frameworks for financial services and healthcare.</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-400">
+                        <span><i class="fas fa-user text-cyan-accent"></i> Vikram Rao, CISSP</span>
+                        <span><i class="fas fa-calendar-day"></i> Aug 19, 2026 · 3:30 PM IST</span>
+                    </div>
+                    <button class="mt-4 btn-primary w-full py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Registration successful! You will receive a calendar invite.')">
+                        <i class="fas fa-ticket-alt mr-1"></i> Register now
+                    </button>
+                </div>
+
+                <div class="webinar-card rounded-xl p-6 md:col-span-2">
+                    <div class="flex justify-between items-start">
+                        <span class="register-badge text-xs font-bold px-3 py-1 rounded-full">📈 8 seats left</span>
+                        <span class="text-cyan-accent text-sm"><i class="far fa-clock"></i> 2h</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mt-3">ERP & Tally Performance on Co-location</h3>
+                    <p class="text-gray-300 text-sm mt-1">Maximize Tally/ERP performance with dedicated bare-metal servers. Reduce latency and improve concurrent user load. Real case studies from manufacturing and retail.</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-400">
+                        <span><i class="fas fa-user text-cyan-accent"></i> Ananya Menon, ERP Lead</span>
+                        <span><i class="fas fa-calendar-day"></i> Aug 26, 2026 · 5:00 PM IST</span>
+                    </div>
+                    <button class="mt-4 btn-primary w-full md:w-auto px-8 py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Registration successful! You will receive a calendar invite.')">
+                        <i class="fas fa-ticket-alt mr-1"></i> Register now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Past Webinars -->
+            <div class="mt-10">
+                <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-history text-cyan-accent mr-2"></i>Past Webinars (On-Demand)</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-slate-soft/30 p-4 rounded-xl border border-gray-700/50">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Watch Now</span>
+                        <h4 class="text-white font-semibold mt-2 text-sm">Hybrid Cloud Architecture 101</h4>
+                        <p class="text-xs text-gray-400">How to design a cost-effective hybrid infrastructure</p>
+                    </div>
+                    <div class="bg-slate-soft/30 p-4 rounded-xl border border-gray-700/50">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Watch Now</span>
+                        <h4 class="text-white font-semibold mt-2 text-sm">Disaster Recovery Planning</h4>
+                        <p class="text-xs text-gray-400">Build a resilient infrastructure with RTO of 4 hours</p>
+                    </div>
+                    <div class="bg-slate-soft/30 p-4 rounded-xl border border-gray-700/50">
+                        <span class="badge-cyan text-xs px-2 py-0.5 rounded-full">Watch Now</span>
+                        <h4 class="text-white font-semibold mt-2 text-sm">Cloud Cost Optimization Masterclass</h4>
+                        <p class="text-xs text-gray-400">Save 40-60% on your cloud bills</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- RESOURCES PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-resources" class="page">
+            <h2 class="text-3xl font-bold text-white mb-2">
+                <i class="fas fa-book-open text-cyan-accent mr-3"></i>Resources & Insights
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-6">Whitepapers, case studies, guides, and tools to help you make informed infrastructure decisions.</p>
+
+            <!-- Whitepapers -->
+            <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-file-pdf text-cyan-accent mr-2"></i>Whitepapers</h3>
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="resource-card rounded-xl p-4">
+                    <i class="fas fa-file-pdf text-2xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">The Co-location TCO Playbook</h4>
+                    <p class="text-xs text-gray-400">Calculate your true server cost including power, cooling, and maintenance.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Download <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4">
+                    <i class="fas fa-file-pdf text-2xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">Idle Server Report 2026</h4>
+                    <p class="text-xs text-gray-400">Industry analysis: 80% of physical servers run at < 20% utilization.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Download <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4">
+                    <i class="fas fa-file-pdf text-2xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">Security Checklist for Data Centers</h4>
+                    <p class="text-xs text-gray-400">Biometric, N+1, fire suppression — comprehensive checklist.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Download <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Case Studies -->
+            <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-briefcase text-cyan-accent mr-2"></i>Case Studies</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div class="resource-card rounded-xl p-4 border-l-2 border-cyan-accent">
+                    <h4 class="text-white font-semibold text-sm">Manufacturing: ₹1.2 Cr Annual Savings</h4>
+                    <p class="text-xs text-gray-400">How a leading manufacturer migrated 40 servers to co-location and saved ₹1.2 Cr annually.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Read case study <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4 border-l-2 border-cyan-accent">
+                    <h4 class="text-white font-semibold text-sm">Fintech: 56% Cloud Cost Reduction</h4>
+                    <p class="text-xs text-gray-400">How a fintech company reduced cloud bills from ₹4 Lakh to ₹1.75 Lakh per month.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Read case study <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4 border-l-2 border-cyan-accent">
+                    <h4 class="text-white font-semibold text-sm">Healthcare: HIPAA Compliance Achieved</h4>
+                    <p class="text-xs text-gray-400">How a hospital network achieved HIPAA compliance with co-location.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Read case study <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4 border-l-2 border-cyan-accent">
+                    <h4 class="text-white font-semibold text-sm">Startup: Professional IT from Day One</h4>
+                    <p class="text-xs text-gray-400">How a fintech startup built enterprise infrastructure with ₹3,000/month.</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Read case study <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-tools text-cyan-accent mr-2"></i>Interactive Tools</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="resource-card rounded-xl p-4 text-center">
+                    <i class="fas fa-calculator text-3xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">TCO Calculator</h4>
+                    <p class="text-xs text-gray-400">Calculate your infrastructure cost savings</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Use tool <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4 text-center">
+                    <i class="fas fa-chart-line text-3xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">Cost Savings Estimator</h4>
+                    <p class="text-xs text-gray-400">Estimate your potential savings in 2 minutes</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Use tool <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="resource-card rounded-xl p-4 text-center">
+                    <i class="fas fa-shield text-3xl text-cyan-accent mb-2"></i>
+                    <h4 class="text-white font-semibold text-sm">Compliance Readiness Check</h4>
+                    <p class="text-xs text-gray-400">Check if your infrastructure is audit-ready</p>
+                    <a href="#" class="text-cyan-accent text-xs inline-flex items-center mt-2 hover:underline">Check now <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PRICING PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-pricing" class="page">
+            <h2 class="text-3xl font-bold text-white mb-2">
+                <i class="fas fa-tag text-cyan-accent mr-3"></i>Simple, Transparent Pricing
+            </h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-6">Pay only for what you need. No hidden fees, no surprises. All plans include 24/7 monitoring and NOC support.</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Starter -->
+                <div class="pricing-card bg-slate-soft/40 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white">Starter</h3>
+                    <p class="text-gray-400 text-sm">For 1 server</p>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-white">₹3,000</span>
+                        <span class="text-gray-400 text-sm">/month</span>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-300">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 1U rack space</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 1A power</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 100Mbps bandwidth</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 24/7 monitoring</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 2 remote hands/month</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Basic support</li>
+                    </ul>
+                    <button class="mt-6 btn-primary w-full py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Talk to our team to get started.')">Get Started</button>
+                    <p class="text-xs text-gray-400 mt-2 text-center">Setup: ₹25,000 one-time</p>
+                </div>
+
+                <!-- Professional -->
+                <div class="pricing-card popular rounded-xl p-6 border-2 border-cyan-accent relative">
+                    <span class="absolute -top-3 right-4 bg-cyan-accent text-[#0b1a2b] text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
+                    <h3 class="text-lg font-bold text-white">Professional</h3>
+                    <p class="text-gray-400 text-sm">For 5-10 servers</p>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-white">₹25,000</span>
+                        <span class="text-gray-400 text-sm">/month</span>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-300">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 1 full rack</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 5A power</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 1Gbps bandwidth</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 24/7 NOC support</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 5 remote hands/month</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Quarterly reviews</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Priority support</li>
+                    </ul>
+                    <button class="mt-6 btn-primary w-full py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Talk to our team to get started.')">Get Started</button>
+                    <p class="text-xs text-gray-400 mt-2 text-center">Setup: ₹50,000 one-time</p>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="pricing-card bg-slate-soft/40 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white">Enterprise</h3>
+                    <p class="text-gray-400 text-sm">For 10-50 servers</p>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-white">₹75,000</span>
+                        <span class="text-gray-400 text-sm">/month</span>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-gray-300">
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 2-4 racks</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 10A power</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 10Gbps bandwidth</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Dedicated NOC team</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 10 remote hands/month</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Hybrid cloud setup</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> Direct connect included</li>
+                        <li><i class="fas fa-check text-cyan-accent w-4"></i> 24x7 dedicated support</li>
+                    </ul>
+                    <button class="mt-6 btn-primary w-full py-2.5 rounded-lg text-sm font-semibold" onclick="alert('✅ Talk to our team to get started.')">Get Started</button>
+                    <p class="text-xs text-gray-400 mt-2 text-center">Setup: ₹75,000 one-time</p>
+                </div>
+            </div>
+
+            <!-- Custom Quote -->
+            <div class="mt-6 bg-slate-soft/30 rounded-xl p-6 border border-cyan-accent/20 text-center">
+                <h4 class="text-white font-bold text-lg"><i class="fas fa-building text-cyan-accent mr-2"></i>50+ Servers?</h4>
+                <p class="text-gray-300 text-sm">Get a custom quote tailored to your enterprise needs. Volume discounts available.</p>
+                <button class="mt-3 btn-outline-cyan px-6 py-2 rounded-lg text-sm" onclick="alert('📞 Call us at +91 22 4000 1234 for a custom quote.')">
+                    <i class="fas fa-phone mr-1"></i> Request custom quote
+                </button>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold text-white mb-3">Frequently Asked Questions</h3>
+                <div class="space-y-2">
+                    <div class="faq-item py-3"><details><summary class="cursor-pointer text-cyan-accent font-medium">How long does the migration take?</summary><p class="text-gray-300 text-sm mt-2">Most migrations are completed within a 4-6 hour window. We plan carefully to minimize business disruption.</p></details></div>
+                    <div class="faq-item py-3"><details><summary class="cursor-pointer text-cyan-accent font-medium">What about my existing cloud subscriptions?</summary><p class="text-gray-300 text-sm mt-2">We set up hybrid connectivity — your co-located servers can seamlessly connect to AWS, Azure, or GCP.</p></details></div>
+                    <div class="faq-item py-3"><details><summary class="cursor-pointer text-cyan-accent font-medium">Is my data safe during physical relocation?</summary><p class="text-gray-300 text-sm mt-2">Absolutely. We use insured, climate-controlled transport with GPS tracking. All drives are encrypted.</p></details></div>
+                    <div class="faq-item py-3"><details><summary class="cursor-pointer text-cyan-accent font-medium">Can I keep some servers in my office?</summary><p class="text-gray-300 text-sm mt-2">Yes, we recommend a hybrid approach. Keep business-critical, low-latency workloads on-premise and move others to co-location.</p></details></div>
+                    <div class="faq-item py-3"><details><summary class="cursor-pointer text-cyan-accent font-medium">What support do I get?</summary><p class="text-gray-300 text-sm mt-2">All plans include 24/7 monitoring and NOC support. Professional and Enterprise plans include priority and dedicated support.</p></details></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- CONTACT PAGE -->
+        <!-- ============================================================ -->
+        <div id="page-contact" class="page">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-envelope text-cyan-accent mr-3"></i>Get in touch</h2>
+                    <p class="text-gray-300 mb-6">Talk to our co-location specialists. Get a free audit or ask about our Mumbai data centers.</p>
+                    <form onsubmit="alert('✅ Your message has been sent. We will respond within 24 hours.'); return false;">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Full name *</label><input type="text" required class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white" placeholder="Your name"></div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Email *</label><input type="email" required class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white" placeholder="you@company.com"></div>
+                        </div>
+                        <div class="mt-4"><label class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                            <select class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white">
+                                <option>General Inquiry</option>
+                                <option>Co-location Audit Request</option>
+                                <option>Data Center Tour Request</option>
+                                <option>Industry-Specific Solution</option>
+                                <option>Webinar Registration</option>
+                                <option>Pricing Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="mt-4"><label class="block text-sm font-medium text-gray-300 mb-1">Message</label><textarea rows="4" class="w-full rounded-lg px-4 py-3 bg-[#172433] border border-gray-600 text-white" placeholder="Tell us about your infrastructure needs..."></textarea></div>
+                        <button type="submit" class="mt-4 btn-primary px-8 py-3 rounded-lg font-semibold shadow-cyber"><i class="fas fa-paper-plane mr-2"></i> Send message</button>
+                    </form>
+                </div>
+                <div class="bg-slate-soft/30 p-6 rounded-xl border border-gray-700/50 h-fit">
+                    <h3 class="text-lg font-semibold text-white mb-3"><i class="fas fa-map-pin text-cyan-accent mr-2"></i> Our Offices</h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <p><i class="fas fa-building text-cyan-accent w-5"></i> Mumbai DC BOM1 – Airoli, Navi Mumbai</p>
+                        <p><i class="fas fa-building text-cyan-accent w-5"></i> Mumbai DC BOM2 – Turbhe, Navi Mumbai</p>
+                        <p><i class="fas fa-building text-cyan-accent w-5"></i> Delhi NCR – Noida</p>
+                        <p><i class="fas fa-building text-cyan-accent w-5"></i> Bangalore – Electronic City</p>
+                        <p><i class="fas fa-phone text-cyan-accent w-5"></i> +91 22 4000 1234</p>
+                        <p><i class="fas fa-envelope text-cyan-accent w-5"></i> audit@nexusaudit.co</p>
+                    </div>
+                    <hr class="border-gray-700 my-4">
+                    <p class="text-xs text-gray-400"><i class="fas fa-clock text-cyan-accent mr-1"></i> 24/7 NOC support · Remote hands always available</p>
+                    <div class="mt-4 flex gap-3 text-gray-400">
+                        <a href="#" class="hover:text-cyan-accent"><i class="fab fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-cyan-accent"><i class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-cyan-accent"><i class="fab fa-youtube text-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <div class="text-center text-sm text-gray-500 border-t border-gray-700/40 pt-6 mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <span><i class="fas fa-check text-cyan-accent mr-1"></i> 200+ servers migrated</span>
+            <span><i class="fas fa-check text-cyan-accent mr-1"></i> 99.99% uptime SLA</span>
+            <span><i class="fas fa-check text-cyan-accent mr-1"></i> 24/7 NOC support</span>
+            <span><i class="fas fa-check text-cyan-accent mr-1"></i> ISO 27001 · SOC2</span>
+            <span class="text-gray-600">© 2026 NexusAudit · India's Co-location Partner</span>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('[data-page]');
+        const pages = {
+            home: document.getElementById('page-home'),
+            datacenters: document.getElementById('page-datacenters'),
+            industries: document.getElementById('page-industries'),
+            services: document.getElementById('page-services'),
+            scenarios: document.getElementById('page-scenarios'),
+            webinars: document.getElementById('page-webinars'),
+            resources: document.getElementById('page-resources'),
+            pricing: document.getElementById('page-pricing'),
+            contact: document.getElementById('page-contact')
+        };
+
+        function navigateTo(pageId) {
+            Object.values(pages).forEach(p => p.classList.remove('active'));
+            if (pages[pageId]) pages[pageId].classList.add('active');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) link.classList.add('active');
+            });
+            document.getElementById('mobileMenu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.dataset.page;
+                if (page) navigateTo(page);
+            });
+        });
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // Multi-step form
+        let currentStep = 1;
+        const stepPanels = { 1: document.getElementById('step1'), 2: document.getElementById('step2'), 3: document.getElementById(
+                'step3') };
+        const dots = document.querySelectorAll('.step-dot');
+        const stepCounter = document.getElementById('stepCounter');
+
+        function updateUI() {
+            [1, 2, 3].forEach(s => {
+                stepPanels[s].classList.toggle('active', s === currentStep);
+            });
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx + 1 === currentStep);
+            });
+            if (stepCounter) stepCounter.textContent = currentStep;
+        }
+
+        window.goToStep = function(step) {
+            if (step === 2) {
+                const company = document.getElementById('companyName').value.trim();
+                const desig = document.getElementById('designation').value.trim();
+                if (!company || !desig) { alert('Please enter Company Name and Designation.'); return; }
+            }
+            currentStep = step;
+            updateUI();
+        };
+
+        window.submitForm = function() {
+            const company = document.getElementById('companyName').value.trim();
+            const designation = document.getElementById('designation').value.trim();
+            if (!company || !designation) { alert('Company and Designation are required.'); return; }
+            const challenges = [];
+            if (document.getElementById('challengeCost').checked) challenges.push('High costs');
+            if (document.getElementById('challengeService').checked) challenges.push('Poor service quality');
+            if (document.getElementById('challengeMaintenance').checked) challenges.push('Maintenance overhead');
+            if (document.getElementById('challengeGrowth').checked) challenges.push('Need to grow');
+            const payload = {
+                company,
+                designation,
+                setup: document.getElementById('currentSetup').value,
+                servers: document.getElementById('serverCount').value,
+                challenges: challenges.join(', ') || 'Not specified',
+                notes: document.getElementById('otherPain').value.trim() || 'None'
+            };
+            console.log('Audit payload:', payload);
+            document.querySelector('.step-panel.active')?.classList.remove('active');
+            document.getElementById('formSuccess').classList.remove('hidden');
+            dots.forEach(d => d.classList.remove('active'));
+            if (stepCounter) stepCounter.textContent = '✓';
+            alert(
+                `✅ Audit submitted!\n\nCompany: ${company}\nDesignation: ${designation}\nSetup: ${payload.setup}\nServers: ${payload.servers}\nChallenges: ${payload.challenges}\n\nWe'll prepare your personalized savings report within 24 hours.`
+            );
+        };
+        updateUI();
+    </script>
+
+</body>
+</html>
